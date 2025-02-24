@@ -1,28 +1,9 @@
-
-import { Button } from './Components/ui/Button'
-import { PlusIcon } from './Icons/PlusIcon'
-import { ShareIcon } from './Icons/ShareIcon'
+import DashBoard from './pages/DashBoard'
 
 function App() {
-  return <>
-
-<Button 
-      variant='primary' 
-      title='Add Content' 
-      size='md' 
-      startIcon={<PlusIcon size= "md" />}  
-   />
-
-<Button 
-      variant='secondary' 
-      title='Share' 
-      size='md' 
-      startIcon={<ShareIcon size= "md" />} 
-     />
-
-</>
-
-  
+  return (
+    <DashBoard />
+  )
 }
 
 export default App
