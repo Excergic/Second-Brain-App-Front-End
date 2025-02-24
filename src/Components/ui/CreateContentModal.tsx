@@ -3,6 +3,7 @@
 
 import { CrossIcon } from "../../Icons/CrossIcon";
 import { Button } from "./Button";
+import { Input } from "./input";
 
 export function CreateContentModal ({open, onClose}) {
     return <div>
@@ -28,9 +29,3 @@ export function CreateContentModal ({open, onClose}) {
     </div>}
     </div>
 }
-
-function Input ({onChange, placeholder} : {onChange : () => void}) {
-    return <div>
-        <input placeholder={placeholder} type="text" className="px-4 py-2 border-2 border-trasperent rounded" onChange={onChange}></input>
-    </div>
-} 

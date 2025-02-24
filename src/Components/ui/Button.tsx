@@ -7,6 +7,7 @@ interface ButtonProps{
     startIcon? : ReactElement; //optional
     endIcon? : ReactElement ;// optional
     onclick? : () => void;
+    loading? : boolean;
 }
 
 // Global Styles for size so that we can use directly to component
@@ -24,17 +25,30 @@ const varianStyles = {
 
 const defaultStyle = "px-4 py-2 rounded-md font-light";
 
-export const Button = (props : ButtonProps) => {
-    return <><div className="mt-4">
-    <button className={`${sizeStyles[props.size]} ${defaultStyle} ${varianStyles[props.variant]}`} onClick={props.onclick}>
-        <div className="flex items-center">
-            {props.startIcon} 
-                <div className="pl-2 pr-2">
-                    {props.title}
-                </div> 
-            {props.endIcon}
-        </div>
-    </button>
-</div>
-    </>
+export const Button = (props: ButtonProps) => {
+    return (
+        <>
+            <div className="mt-4">
+                <button
+                    className={`${sizeStyles[props.size]} ${defaultStyle} ${varianStyles[props.variant]} ${props.loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                    onClick={props.loading ? undefined : props.onclick}
+                    disabled={props.loading} // Disable button when loading
+                >
+                    <div className="flex items-center justify-center">
+                        {props.loading ? (
+                            <div className="border-2 border-t-2 border-gray-200 border-t-white rounded-full w-4 h-4 animate-spin"></div>
+                        ) : (
+                            <>
+                                {props.startIcon}
+                                <div className="pl-2 pr-2">
+                                    {props.title}
+                                </div>
+                                {props.endIcon}
+                            </>
+                        )}
+                    </div>
+                </button>
+            </div>
+        </>
+    )
 }
